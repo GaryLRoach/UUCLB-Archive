@@ -1,0 +1,11 @@
+<!--Web page for Welcome text-->
+{% extends "home/main.html"  %}
+{% load staticfiles %}
+
+
+<div class='readme'>
+ {% include static images/readMeFirst.png %}
+</div>
+
+
+

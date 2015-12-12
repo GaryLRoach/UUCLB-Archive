@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <title>Archive Project Main.html</title>
+        <link rel="stylesheet" type="text/css" href="static/system.css"/>
+        <style>
+            body {
+                font-family: verdana, Geneva, sans-serif;
+                font-size: 12pt;
+                }
+            div.fixed {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                }
+
+            div.buttons {
+                font-family: verdana, Geneva, sans-serif;
+                }
+        </style>
+<!--The following script assures that no button will be hit twice or that
+more than one button can be active at the same time. I uses the getElementById
+method along with setAttribute and removeAttribute methods to toggle the
+disable button parameter on and off.
+-->
+        <script type="text/javascript">
+            "use strict"
+
+            function buttoncontrol(bn){
+                var i = 0;
+                var bx = "";
+                var x = [];
+                if (bn=="resetDone")
+                    {
+                    for (var i = 0; i < 4; i++)
+                        {
+                        bx= "b" + (i+1);
+                        document.getElementById(bx)
+                            .removeAttribute("disabled");
+                        }
+                    return
+                    }
+                else {
+                    for (var i = 0; i < 4; i++)
+                        {
+                        bx= "b" + (i+1);
+                        document.getElementById(bx)
+                            .setAttribute("disabled", "true");
+                        }
+                    }
+                    
+                }
+
+        </script>
+    </head>
+
+    <body>
+        <!--The following code assembles the blue heading for the main
+        template page main.html . The positioning is controlled by the
+        system.css file.
+        -->
+        <img id="header" src="static/images/blueheader.png" alt="UUCLB Header">
+        <img id="title" src="static/images/archives.png" alt="Archive">
+        <img id="chalice" src="static/images/chalice-logo.png" alt="Chalice Logo">
+
+        <div position: absolute; float: left;>
+            <button id="b1" class="toDjango" onclick="buttoncontrol('b1')">
+                    Read Me First</button>
+            <button id="b2" class="toDjango" onclick="buttoncontrol('b2')">
+                    Public Access</button>
+            <button id="b3" class="toDjango" onclick="buttoncontrol('b3')">
+                    Member Access</button>
+            <button id="b4" class="toDjango" onclick="buttoncontrol('b4')">
+                    Administration</button>
+        </div>
+        </div>
+            <script type="text/javascript">
+               /*  var buttonList = document.getElementsByClassName("toDjango");
+                document.write(buttonList.length);
+                document.write(buttonList.Item(0));
+                document.write(buttonList.namedItem(0));*/
+            </script>
+        <div>
+
+        <div>
+            {% block content %} {% endblock %}
+        </div>
+
+        <div>
+            <button id="resetDone"type="reset" onclick="buttoncontrol('resetDone')">
+                    Reset</button>
+        </div>
+
+
+        <div class="fixed" position: absolute; float: left;>
+            <div>
+                <hr>
+            </div>
+            <img id="djlogo" src="static/images/django.png " alt="Django Logo">
+            <img id="pylogo" src="static/images/python-powered.png" alt="Python Logo">
+            <img id="dblogo" src="static/images/debian-logo.png" alt="Debian Logo">
+            <img id="pgsql" src="static/images/postgresql.png" alt="Postgresql Logo">
+            <img id="apache" src="static/images/apache2.png" alt="Apache2 Server Logo">
+            <div>
+               Copyright &#169; 2016 Unitarian Universalist Church of Long Beach. All Rights Reserved.
+            </div>
+        </div>
+
+    </body>
+
+</html>
